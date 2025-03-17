@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            color: white;
+            font-family: 'Dancing Script', cursive;
+            text-align: center;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .message {
+            font-size: 24px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            position: relative;
+            z-index: 10;
+        }
+        .text-container {
+            position: absolute;
+            top: 40%;
+            transform: translateY(-50%);
+        }
+        .highlight {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff4081;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <div class="text-container">
+        <h1 class="message" id="msg1">Andry</h1>
+        <p class="message highlight" id="msg2">¡Eres la mujer más preciosa del mundo!</p>
+        
+        <p class="message" id="msg3">¿Recuerdas que te dije que haría esto? Jamás pensé que así, 
+            pero aprovecho para pedirte perdón (si esto te incomoda, perdón, no quiero eso, pero la verdad 
+            lo hago más por estar en paz conmigo mismo) por no haberte querido como merecías y por no 
+            demostrar todos mis senitmietos por ti. Me faltó expresarte y decirte tanto, y solo 
+            me di cuenta cuando me perdí a mí mismo, por perderte sin tenerte... Pero este año quiero que sea 
+            diferente, por eso hago esto, estoy muy feliz por tus avances. No escribiré, pero en cada fecha 
+            especial estaré deseándote lo mejor.</p>
+        
+        <p class="message" id="msg4">De mí no sabrás más, lo prometo. Espero que logres todas tus metas, no 
+            dejes que nada ni nadie cambie tu enfoque. No respondas esto, pero siempre contarás conmigo para 
+            lo que necesites, aunque no hablemos, recuérdalo siempre.</p>
+        
+        <p class="message" id="msg5">Te quiero, mi Leona.</p>
+    </div>
+    
+    <script>
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const heartPoints = [];
+
+        function heartEquation(t) {
+            const x = 16 * Math.pow(Math.sin(t), 3);
+            const y = 13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t);
+            return { x: x * 10, y: -y * 10 };
+        }
+
+        for (let i = 0; i < 100; i++) {
+            const angle = (Math.PI / 50) * i;
+            heartPoints.push(heartEquation(angle));
+        }
+
+        class Particle {
+            constructor(x, y, targetX, targetY) {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.targetX = canvas.width / 2 + targetX;
+                this.targetY = canvas.height / 2 + targetY - 50;
+                this.size = 3;
+                this.speed = Math.random() * 0.02 + 0.01; // Hace que el corazón se forme más lento
+            }
+
+            move() {
+                this.x += (this.targetX - this.x) * this.speed;
+                this.y += (this.targetY - this.y) * this.speed;
+            }
+
+            draw() {
+                ctx.fillStyle = "red";
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        heartPoints.forEach(point => {
+            particles.push(new Particle(point.x, point.y, point.x, point.y));
+        });
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(particle => {
+                particle.move();
+                particle.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        function showMessages() {
+            setTimeout(() => document.getElementById("msg1").style.opacity = 1, 1000);
+            setTimeout(() => document.getElementById("msg2").style.opacity = 1, 2000);
+            setTimeout(() => document.getElementById("msg3").style.opacity = 1, 3000);
+            setTimeout(() => document.getElementById("msg4").style.opacity = 1, 4000);
+            setTimeout(() => document.getElementById("msg5").style.opacity = 1, 5000);
+        }
+
+        showMessages();
+    </script>
+</body>
+</html>
