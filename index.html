@@ -16,8 +16,9 @@
             font-family: 'Dancing Script', cursive;
             text-align: center;
             flex-direction: column;
-            overflow: hidden;
+            overflow-y: auto; /* Permite desplazamiento si es necesario */
             position: relative;
+            padding: 20px;
         }
         canvas {
             position: absolute;
@@ -25,21 +26,37 @@
             left: 0;
         }
         .message {
-            font-size: 24px;
+            font-size: 22px;
             opacity: 0;
             transition: opacity 1s ease-in-out;
             position: relative;
             z-index: 10;
+            word-wrap: break-word; /* Evita cortes extraños en el texto */
         }
         .text-container {
-            position: absolute;
-            top: 40%;
-            transform: translateY(-50%);
+            position: relative;
+            width: 90%;
+            max-width: 500px;
         }
         .highlight {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: bold;
             color: #ff4081;
+        }
+        #msg1 {
+            font-size: 50px; /* Hace el nombre más grande */
+            font-weight: bold;
+        }
+        @media (max-width: 600px) {
+            .message {
+                font-size: 18px; /* Ajuste para pantallas pequeñas */
+            }
+            .highlight {
+                font-size: 22px;
+            }
+            #msg1 {
+                font-size: 40px; /* Hace el nombre más grande en móviles */
+            }
         }
     </style>
 </head>
@@ -52,12 +69,12 @@
         <p class="message" id="msg3">¿Recuerdas que te dije que haría esto? Jamás pensé que así, 
             pero aprovecho para pedirte perdón (si esto te incomoda, perdón, no quiero eso, pero la verdad 
             lo hago más por estar en paz conmigo mismo) por no haberte querido como merecías y por no 
-            demostrar todos mis senitmietos por ti. Me faltó expresarte y decirte tanto, y solo 
+            demostrar todos mis sentimientos por ti. Me faltó expresarte y decirte tanto, y solo 
             me di cuenta cuando me perdí a mí mismo, por perderte sin tenerte... Pero este año quiero que sea 
             diferente, por eso hago esto, estoy muy feliz por tus avances. No escribiré, pero en cada fecha 
             especial estaré deseándote lo mejor.</p>
         
-        <p class="message" id="msg4">Intenté acercarme para ver si podia ser normal todo pero vi que no, asi que 
+        <p class="message" id="msg4">Intenté acercarme para ver si podía ser normal todo pero vi que no, así que 
             de mí no sabrás más. Esta vez lo prometo; Espero que logres todas tus metas, no dejes que nada ni 
             nadie cambie tu enfoque. No respondas esto, pero siempre contarás conmigo para lo que necesites, 
             aunque no hablemos, recuérdalo siempre.</p>
