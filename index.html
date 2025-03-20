@@ -16,8 +16,9 @@
             font-family: 'Dancing Script', cursive;
             text-align: center;
             flex-direction: column;
-            overflow: hidden;
+            overflow-y: auto; /* Permite desplazamiento si es necesario */
             position: relative;
+            padding: 20px;
         }
         canvas {
             position: absolute;
@@ -25,44 +26,36 @@
             left: 0;
         }
         .message {
-            font-size: 4vw; /* Se adapta mejor a la pantalla */
+            font-size: 22px;
             opacity: 0;
             transition: opacity 1s ease-in-out;
             position: relative;
             z-index: 10;
-            padding: 5px;
-            line-height: 1.3;
+            word-wrap: break-word; /* Evita cortes extraños en el texto */
         }
         .text-container {
-            position: absolute;
-            top: 50%;
+            position: relative;
             width: 90%;
-            max-width: 600px;
-            transform: translateY(-50%);
+            max-width: 500px;
         }
         .highlight {
-            font-size: 5vw;
+            font-size: 26px;
             font-weight: bold;
             color: #ff4081;
         }
         #msg1 {
-            font-size: 8vw; /* Nombre más grande */
+            font-size: 50px; /* Hace el nombre más grande */
+            font-weight: bold;
         }
-
-        /* Ajustes para móviles */
         @media (max-width: 600px) {
-            .text-container {
-                top: 48%;
-                width: 95%;
-            }
             .message {
-                font-size: 3.5vw; /* Reduce más el tamaño en móviles */
-            }
-            #msg1 {
-                font-size: 7vw;
+                font-size: 18px; /* Ajuste para pantallas pequeñas */
             }
             .highlight {
-                font-size: 4.5vw;
+                font-size: 22px;
+            }
+            #msg1 {
+                font-size: 40px; /* Hace el nombre más grande en móviles */
             }
         }
     </style>
@@ -106,18 +99,18 @@
         }
 
         for (let i = 0; i < 100; i++) {
-            const angle = (Math.PI / 50) * i * 2 * Math.PI;
+            const angle = (Math.PI / 50) * i;
             heartPoints.push(heartEquation(angle));
         }
 
         class Particle {
-            constructor(targetX, targetY) {
+            constructor(x, y, targetX, targetY) {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
                 this.targetX = canvas.width / 2 + targetX;
-                this.targetY = canvas.height / 2 + targetY - 100;
+                this.targetY = canvas.height / 2 + targetY - 50;
                 this.size = 3;
-                this.speed = Math.random() * 0.02 + 0.01;
+                this.speed = Math.random() * 0.02 + 0.01; // Hace que el corazón se forme más lento
             }
 
             move() {
@@ -134,7 +127,7 @@
         }
 
         heartPoints.forEach(point => {
-            particles.push(new Particle(point.x, point.y));
+            particles.push(new Particle(point.x, point.y, point.x, point.y));
         });
 
         function animate() {
