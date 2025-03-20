@@ -30,10 +30,13 @@
             transition: opacity 1s ease-in-out;
             position: relative;
             z-index: 10;
+            padding: 5px;
         }
         .text-container {
             position: absolute;
-            top: 60%; /* Bajé el texto */
+            top: 55%; /* Ajustado para móviles */
+            width: 90%;
+            max-width: 600px;
             transform: translateY(-50%);
         }
         .highlight {
@@ -42,7 +45,24 @@
             color: #ff4081;
         }
         #msg1 {
-            font-size: 60px; /* Hice el nombre más grande */
+            font-size: 60px; /* Nombre grande */
+        }
+
+        /* Ajustes para móviles */
+        @media (max-width: 600px) {
+            .text-container {
+                top: 50%; /* Ajustado para pantallas pequeñas */
+                width: 95%;
+            }
+            .message {
+                font-size: 18px; /* Texto más pequeño */
+            }
+            #msg1 {
+                font-size: 40px; /* Tamaño reducido en móviles */
+            }
+            .highlight {
+                font-size: 22px;
+            }
         }
     </style>
 </head>
@@ -65,7 +85,7 @@
             nadie cambie tu enfoque. No respondas esto, pero siempre contarás conmigo para lo que necesites, 
             aunque no hablemos, recuérdalo siempre.</p>
         
-        <p class="message" id="msg5">Te quiero, mi Leona...</p>
+        <p class="message" id="msg5">Te quiero, mi Leona.</p>
     </div>
     
     <script>
@@ -85,7 +105,7 @@
         }
 
         for (let i = 0; i < 100; i++) {
-            const angle = (Math.PI / 50) * i * 2 * Math.PI; // Ajusté el cálculo de ángulos
+            const angle = (Math.PI / 50) * i * 2 * Math.PI;
             heartPoints.push(heartEquation(angle));
         }
 
@@ -94,7 +114,7 @@
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
                 this.targetX = canvas.width / 2 + targetX;
-                this.targetY = canvas.height / 2 + targetY - 100; /* Subí un poco el corazón */
+                this.targetY = canvas.height / 2 + targetY - 100;
                 this.size = 3;
                 this.speed = Math.random() * 0.02 + 0.01;
             }
