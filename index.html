@@ -16,7 +16,7 @@
             font-family: 'Dancing Script', cursive;
             text-align: center;
             flex-direction: column;
-            overflow-y: auto; /* Permite desplazamiento si es necesario */
+            overflow-y: auto; 
             position: relative;
             padding: 20px;
         }
@@ -26,37 +26,37 @@
             left: 0;
         }
         .message {
-            font-size: 22px;
+            font-size: 24px; /* Aumentado de 22px */
             opacity: 0;
             transition: opacity 1s ease-in-out;
             position: relative;
             z-index: 10;
-            word-wrap: break-word; /* Evita cortes extraños en el texto */
+            word-wrap: break-word; 
         }
         .text-container {
             position: absolute;
-            top: 30%; /* Antes estaba en 40%, prueba con 30% */
+            top: 30%; 
             transform: translateY(-50%);
-            width: 90%; /* Para mejor ajuste en móviles */
+            width: 90%; 
         }
         .highlight {
-            font-size: 26px;
+            font-size: 28px; /* Aumentado de 26px */
             font-weight: bold;
             color: #ff4081;
         }
         #msg1 {
-            font-size: 50px; /* Hace el nombre más grande */
+            font-size: 55px; /* Aumentado de 50px */
             font-weight: bold;
         }
         @media (max-width: 600px) {
             .message {
-                font-size: 18px; /* Ajuste para pantallas pequeñas */
+                font-size: 20px; /* Aumentado de 18px */
             }
             .highlight {
-                font-size: 22px;
+                font-size: 24px; /* Aumentado de 22px */
             }
             #msg1 {
-                font-size: 40px; /* Hace el nombre más grande en móviles */
+                font-size: 45px; /* Aumentado de 40px */
             }
         }
     </style>
@@ -111,7 +111,7 @@
                 this.targetX = canvas.width / 2 + targetX;
                 this.targetY = canvas.height / 2 + targetY - 50;
                 this.size = 3;
-                this.speed = Math.random() * 0.02 + 0.01; // Hace que el corazón se forme más lento
+                this.speed = Math.random() * 0.02 + 0.01;
             }
 
             move() {
