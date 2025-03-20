@@ -34,9 +34,10 @@
             word-wrap: break-word; /* Evita cortes extraños en el texto */
         }
         .text-container {
-            position: relative;
-            width: 90%;
-            max-width: 500px;
+            position: absolute;
+            top: 30%; /* Antes estaba en 40%, prueba con 30% */
+            transform: translateY(-50%);
+            width: 90%; /* Para mejor ajuste en móviles */
         }
         .highlight {
             font-size: 26px;
