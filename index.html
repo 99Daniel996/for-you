@@ -25,43 +25,44 @@
             left: 0;
         }
         .message {
-            font-size: 24px;
+            font-size: 4vw; /* Se adapta mejor a la pantalla */
             opacity: 0;
             transition: opacity 1s ease-in-out;
             position: relative;
             z-index: 10;
             padding: 5px;
+            line-height: 1.3;
         }
         .text-container {
             position: absolute;
-            top: 55%; /* Ajustado para móviles */
+            top: 50%;
             width: 90%;
             max-width: 600px;
             transform: translateY(-50%);
         }
         .highlight {
-            font-size: 28px;
+            font-size: 5vw;
             font-weight: bold;
             color: #ff4081;
         }
         #msg1 {
-            font-size: 60px; /* Nombre grande */
+            font-size: 8vw; /* Nombre más grande */
         }
 
         /* Ajustes para móviles */
         @media (max-width: 600px) {
             .text-container {
-                top: 50%; /* Ajustado para pantallas pequeñas */
+                top: 48%;
                 width: 95%;
             }
             .message {
-                font-size: 18px; /* Texto más pequeño */
+                font-size: 3.5vw; /* Reduce más el tamaño en móviles */
             }
             #msg1 {
-                font-size: 40px; /* Tamaño reducido en móviles */
+                font-size: 7vw;
             }
             .highlight {
-                font-size: 22px;
+                font-size: 4.5vw;
             }
         }
     </style>
