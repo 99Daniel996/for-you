@@ -33,13 +33,16 @@
         }
         .text-container {
             position: absolute;
-            top: 40%;
+            top: 55%; /* Bajé el texto */
             transform: translateY(-50%);
         }
         .highlight {
             font-size: 28px;
             font-weight: bold;
             color: #ff4081;
+        }
+        #msg1 {
+            font-size: 50px; /* Aumenté el tamaño del nombre */
         }
     </style>
 </head>
@@ -52,12 +55,12 @@
         <p class="message" id="msg3">¿Recuerdas que te dije que haría esto? Jamás pensé que así, 
             pero aprovecho para pedirte perdón (si esto te incomoda, perdón, no quiero eso, pero la verdad 
             lo hago más por estar en paz conmigo mismo) por no haberte querido como merecías y por no 
-            demostrar todos mis senitmietos por ti. Me faltó expresarte y decirte tanto, y solo 
+            demostrar todos mis sentimientos por ti. Me faltó expresarte y decirte tanto, y solo 
             me di cuenta cuando me perdí a mí mismo, por perderte sin tenerte... Pero este año quiero que sea 
             diferente, por eso hago esto, estoy muy feliz por tus avances. No escribiré, pero en cada fecha 
             especial estaré deseándote lo mejor.</p>
         
-        <p class="message" id="msg4">Intenté acercarme para ver si podia ser normal todo pero vi que no, asi que 
+        <p class="message" id="msg4">Intenté acercarme para ver si podía ser normal todo pero vi que no, así que 
             de mí no sabrás más. Esta vez lo prometo; Espero que logres todas tus metas, no dejes que nada ni 
             nadie cambie tu enfoque. No respondas esto, pero siempre contarás conmigo para lo que necesites, 
             aunque no hablemos, recuérdalo siempre.</p>
@@ -93,7 +96,7 @@
                 this.targetX = canvas.width / 2 + targetX;
                 this.targetY = canvas.height / 2 + targetY - 50;
                 this.size = 3;
-                this.speed = Math.random() * 0.02 + 0.01; // Hace que el corazón se forme más lento
+                this.speed = Math.random() * 0.02 + 0.01;
             }
 
             move() {
