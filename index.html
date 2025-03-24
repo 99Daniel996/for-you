@@ -85,6 +85,11 @@
         <p class="message" id="msg5">Te quiero, mi Leona.</p>
     </div>
     
+    <audio id="miAudio" autoplay loop>
+        <source src="until_i_found_you.mp3" type="audio/mpeg">
+        Tu navegador no soporta el audio.
+    </audio>
+
     <script>
         const canvas = document.getElementById("canvas");
         const ctx = canvas.getContext("2d");
@@ -153,6 +158,13 @@
         }
 
         showMessages();
+
+        // Control de la canción
+        document.addEventListener("DOMContentLoaded", function () {
+            let audio = document.getElementById("miAudio");
+            audio.volume = 0.5; // Ajusta el volumen (0.0 - 1.0)
+            audio.play().catch(error => console.log("El usuario debe interactuar para iniciar el audio."));
+        });
     </script>
 </body>
 </html>
